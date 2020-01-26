@@ -1,0 +1,165 @@
+body
+{
+    background: pink;
+}
+
+canvas
+{
+position: absolute;
+left: 91%;
+z-index: 2;
+    
+}
+
+form
+{
+    width:30%;
+    ;
+    float: top left;
+}
+.search
+{
+    font-size: 120%;
+    width: 65%;
+    font-family: monospace;
+    border: 1% black solid;
+}
+.search:hover
+{
+    background-color: beige;
+    border: 1% white solid;
+}
+button {
+    position:relative;
+    left: auto;
+    right: auto;
+}
+.button
+{
+    background:url(19.jpeg);
+    font-style: oblique;
+}
+#header
+{
+    z-index: 1;
+    background: url(19.jpeg);
+    opacity: 0.9;
+    margin: 1%;
+    padding:3%;
+	border: 3px black solid;
+    
+}
+#topcart
+{
+    border:2px black;
+    background-color: aqua;
+    font-family: inherit;
+    font-size: 110%;
+    float: left;
+    width: 20em;
+    height: 26em;
+    border-style: solid;
+    margin-top: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+    text-align: center;
+}
+#other
+{
+    border:2px black solid;
+    float: left;
+    font-size: 110%;
+    margin-top: 1%;
+    width: 52em;
+    height: 26em;
+    background-color: aquamarine;
+    text-align: center;
+    z-index: 1;
+    margin-left: 1%;
+    margin-bottom: 0;
+    
+}
+a
+{
+    float: left;
+    
+}
+a:hover
+{
+    font-family: fantasy;
+    font-size: 15px;
+}
+.footer1
+{
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-right: 0;
+    padding: 0;
+    font-family: sans-serif; 
+    background-color: beige;
+}
+.footer
+{
+    margin-top: -4em;
+    margin-left: 3em;
+  
+}
+.fotertext{
+    margin-top: 2em;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    font-family: sans-serif; 
+    background-color: beige;
+}
+}
+#footers {
+text-align: center;
+font-size: 20px;
+color: #aaa;
+float: left;
+padding: 10px;
+margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 0;
+background-color: aquamarine;
+}
+.img1
+{
+    margin-top: 9em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+.img2
+{
+    margin-top: 11em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0; 
+}
+.img3
+{
+    margin-top: 3em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+.border
+{
+    border: 2px #15CE0F solid;
+    margin: 5px;
+        
+}
+.position
+{
+    position: absolute;
+    top: 415px;
+    left: 406px;
+}
+.position1
+{
+    position: absolute;
+    top: 210px;
+    right: 70px;
+}

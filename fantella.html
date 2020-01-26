@@ -1,0 +1,132 @@
+<!doctype HTML>
+<head>
+<title>Fantella</title>
+</head>
+<link rel="stylesheet" type="text/css" href="fantella.css" />
+<body>
+    <canvas id="canvas" width="100" height="100">
+    </canvas>
+     <script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+        function  buy()
+        {
+            var r = confirm ("Buy?");
+            
+        }
+        function search()
+        {
+            var x = document.getElementById("topcart");
+            var y = document.getElementById("other");
+            x.style.width = "90%";
+            x.style.display = "";
+        }
+    </script>
+    <div id="header">
+    <form>
+        <input class="search" type="text" placeholder="Nezuko,Hinata,Lucy..." required>
+        <input class="button" type="button" value="Search">
+        <a class="search-btn" href="#">
+        </a>
+    </form>
+    </div>
+    <div id="topcart">
+        <p style="border-bottom: 2px black solid" onclick="search(topcart)">Top Cart</p>
+        <a href="https://001201900045.000webhostapp.com/">
+            <img src="1.jpeg" alt="img" width="345" height="" style="border: 2px blue solid"></a>
+        <button onclick="buy()">$29,99</button>
+    </div>
+    <div id="other">
+        <p style="border-bottom: 3px black solid" onclick="search()">Other Wish</p>
+        <a href="https://kyou.id/items/36223/pvc-figure-17-kurumi-tokisaki-alluring-kimono-ver" target="_blank">
+            <div class="border"><img src="01.jpg" width="120" height="150" alt="Not Found"><button class="footer1">IDR 2,830,000</button></div></a>
+        <a href="https://kyou.id/items/51082/pvc-figure-17-snow-miku-snow-princess-ver" target="_blank">
+            <div class="img1"><div class="border"><img src="02.jpg" width="120" height="150" alt="Not Found"><button class="footer1">IDR 2,790,000</button></div></div></a>
+        <a href="https://kyou.id/items/49714/pvc-figure-16-albedo-sobin-ver" target="_blank">
+            <div class="img3"><div class="border"><img src="03.jpg" width="120" height="150" alt="Not Found"><button class="footer1">IDR 3,200,000</button></div></div></a>
+        <a href="https://kyou.id/items/43986/pvc-figure-17-megumi-kato-first-meeting-outfit-ver" target="_blank">
+            <div class="img2"><div class="border"><img src="04.jpg" width="120" height="150" alt="Not Found"><button class="footer1">IDR 2,400,000</button></div></div></a>
+        <a href="https://kyou.id/items/26387/figma-megumin-konosuba-2" target="_blank">
+            <div class="position"><div class="border"><img src="05.jpg" width="120" height="150" alt="Not Found"><button class="footer1">IDR 1,000,000</button></div></div></a>
+        <a href="https://kyou.id/items/20530/premium-figure-minato-yukina-bang-dream" target="_blank">
+            <div class="position1"><div class="border"><img src="06.jpg" width="120" height="150" alt="Not Found"><button class="footer1">IDR 550,000</button></div></div></a>
+    </div>
+    <p id="footers"><marquee>@Fantella             2019</marquee></p>
+</body>
