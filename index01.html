@@ -1,0 +1,150 @@
+<!doctype HTML>
+<head>
+    <title>Fantella</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="fantella.css"/>
+    <link rel="stylesheet" href="searchbar.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/d82f3a6817.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".btn").click(function(){
+                $(".input").toggleClass("active").focus().val("");
+                $(this).toggleClass("animate");
+            })
+        })
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="100" height="100">
+    </canvas>
+    <script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+</script>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+    <div class="wrapper">
+        <div class="search-box">
+            <input type="text" class="input" placeholder="Search...">
+            <div class="btn">
+                <i class="fas fa-search" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <div id="topcart">
+        <p style="border-bottom: 2px black solid">Top Chart</p>
+        <a href="https://kyou.id/items/33578/pvc-figure-17-hatsune-miku-memorial-dress-ver" target="_blank">
+            <img src="00.jpg" alt="img" width="100%"><p class="footer">IDR 5,380,000</p></a>
+    </div>
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+    <div id="other">
+        <p style="border-bottom: 2px black solid">Other Wish</p>
+        <a href="https://kyou.id/items/36223/pvc-figure-17-kurumi-tokisaki-alluring-kimono-ver" target="_blank">
+            <img src="01.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 2,830,000</p></a>
+        <a href="https://kyou.id/items/51082/pvc-figure-17-snow-miku-snow-princess-ver" target="_blank">
+            <img src="02.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 2,790,000</p></a>
+        <a href="https://kyou.id/items/49714/pvc-figure-16-albedo-sobin-ver" target="_blank">
+            <img src="03.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 3,200,000</p></a>
+        <a href="https://kyou.id/items/43986/pvc-figure-17-megumi-kato-first-meeting-outfit-ver" target="_blank">
+            <img src="04.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 2,400,000</p></a>
+        <a href="https://kyou.id/items/26387/figma-megumin-konosuba-2" target="_blank">
+            <img src="05.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 1,000,000</p></a>
+        <a href="https://kyou.id/items/20530/premium-figure-minato-yukina-bang-dream" target="_blank">
+            <img src="06.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 550,000</p></a>
+        <a href="https://kyou.id/items/51069/pvc-figure-17-rem-ram-twins-ver" target="_blank">
+            <img src="07.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 2,840,000</p></a>
+        <a href="https://kyou.id/items/34896/pvc-figure-18-jibril-great-war-ver" target="_blank">
+            <img src="08.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 1,820,000</p></a>
+        <a href="https://kyou.id/items/23797/pvc-figure-17-lancer-ereshkigal" target="_blank">
+            <img src="09.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 3,120,000</p></a>
+        <a href="https://kyou.id/items/49137/pvc-figure-17-saber-alter-fatestay-night-heavens-feel" target="_blank">
+            <img src="10.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 2,950,000</p></a>
+        <a href="https://kyou.id/items/51071/pvc-18-kamado-nezuko-kimetsu-no-yaiba" target="_blank">
+            <img src="11.jpg" width="150" height="200" alt="Not Found"/><p class="footer1">IDR 1,960,000</p></a>
+        <a href="https://kyou.id/items/50283/pvc-figure-17-yukinoshita-yukino-shiromuku-ver" target="_blank">
+            <img src="12.jpg" width="150" height="200" alt="Not Found"><p class="footer1">IDR 2,900,000</p></a>
+    </div>
+</body>
